@@ -10,18 +10,21 @@
 #define BLOCK_SAMPLES_PER_CH      512u    
 #define BLOCK_SAMPLES_TOTAL       (BLOCK_SAMPLES_PER_CH * AUDIO_IN_CHANNEL_NBR)
 #define BUF_SAMPLES               (BLOCK_SAMPLES_TOTAL * 2u) 
-#define GAIN                      0.7f
+
+#define DELAY_BUF_SIZE            2000u
+#define GAIN                      0.6f
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 static __attribute__((aligned(32))) uint16_t InBuf[BUF_SAMPLES];
 static __attribute__((aligned(32))) uint16_t OutBuf[BUF_SAMPLES];
-static __attribute__((aligned(32))) uint16_t DelayBuf[BUF_SAMPLES];
+
 
 static __IO uint8_t InHalfComplete  = 0;
 static __IO uint8_t InFullComplete  = 0;
 static __IO uint8_t OutHalfComplete = 0;
 static __IO uint8_t OutFullComplete = 0;
 
+static int16_t  DelayBuf[DELAY_BUF_SIZE];
 static uint32_t bufptr;
 
 /* Private function prototypes -----------------------------------------------*/
@@ -51,7 +54,7 @@ static void ProcessDelay(const uint16_t *in, uint16_t *out, uint32_t length)
 
 			out[i] = (int16_t)sum;    
 			DelayBuf[bufptr] = sum;
-			bufptr = (bufptr + 1) % BUF_SAMPLES;
+			bufptr = (bufptr + 1) % DELAY_BUF_SIZE;
 	}
 }
 

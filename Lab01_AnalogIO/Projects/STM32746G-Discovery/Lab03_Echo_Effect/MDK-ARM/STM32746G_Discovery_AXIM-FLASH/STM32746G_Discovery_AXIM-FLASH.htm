@@ -3,7 +3,7 @@
 <title>Static Call Graph - [STM32746G_Discovery_AXIM-FLASH\STM32746G_Discovery_AXIM-FLASH.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image STM32746G_Discovery_AXIM-FLASH\STM32746G_Discovery_AXIM-FLASH.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Thu Aug 14 13:57:49 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Thu Aug 14 14:13:08 2025
 <BR><P>
 <H3>Maximum Stack Usage =        288 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -581,7 +581,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[94]"></a>BSP_AUDIO_IN_HalfTransfer_CallBack</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f7_echo.o(.text.BSP_AUDIO_IN_HalfTransfer_CallBack))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = BSP_AUDIO_IN_HalfTransfer_CallBack &rArr; ProcessDelay
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = BSP_AUDIO_IN_HalfTransfer_CallBack &rArr; ProcessDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ProcessDelay
 </UL>
@@ -623,7 +623,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a4]"></a>BSP_AUDIO_IN_TransferComplete_CallBack</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f7_echo.o(.text.BSP_AUDIO_IN_TransferComplete_CallBack))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = BSP_AUDIO_IN_TransferComplete_CallBack &rArr; ProcessDelay
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = BSP_AUDIO_IN_TransferComplete_CallBack &rArr; ProcessDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ProcessDelay
 </UL>
@@ -1390,7 +1390,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[130]"></a>HAL_SAI_RxCpltCallback</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32746g_discovery_audio.o(.text.HAL_SAI_RxCpltCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_SAI_RxCpltCallback &rArr; BSP_AUDIO_IN_TransferComplete_CallBack &rArr; ProcessDelay
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = HAL_SAI_RxCpltCallback &rArr; BSP_AUDIO_IN_TransferComplete_CallBack &rArr; ProcessDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_AUDIO_IN_TransferComplete_CallBack
 </UL>
@@ -1398,7 +1398,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[131]"></a>HAL_SAI_RxHalfCpltCallback</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32746g_discovery_audio.o(.text.HAL_SAI_RxHalfCpltCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_SAI_RxHalfCpltCallback &rArr; BSP_AUDIO_IN_HalfTransfer_CallBack &rArr; ProcessDelay
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = HAL_SAI_RxHalfCpltCallback &rArr; BSP_AUDIO_IN_HalfTransfer_CallBack &rArr; ProcessDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_AUDIO_IN_HalfTransfer_CallBack
 </UL>
@@ -1821,14 +1821,14 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[70]"></a>SAI_DMARxHalfCplt</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f7xx_hal_sai.o(.text.SAI_DMARxHalfCplt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SAI_DMARxHalfCplt &rArr; HAL_SAI_RxHalfCpltCallback &rArr; BSP_AUDIO_IN_HalfTransfer_CallBack &rArr; ProcessDelay
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SAI_DMARxHalfCplt &rArr; HAL_SAI_RxHalfCpltCallback &rArr; BSP_AUDIO_IN_HalfTransfer_CallBack &rArr; ProcessDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SAI_RxHalfCpltCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> stm32f7xx_hal_sai.o(.text.HAL_SAI_Receive_DMA)
 </UL>
 <P><STRONG><a name="[71]"></a>SAI_DMARxCplt</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, stm32f7xx_hal_sai.o(.text.SAI_DMARxCplt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = SAI_DMARxCplt &rArr; HAL_SAI_RxCpltCallback &rArr; BSP_AUDIO_IN_TransferComplete_CallBack &rArr; ProcessDelay
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = SAI_DMARxCplt &rArr; HAL_SAI_RxCpltCallback &rArr; BSP_AUDIO_IN_TransferComplete_CallBack &rArr; ProcessDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_2
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SAI_RxCpltCallback
@@ -2186,8 +2186,8 @@ Local Symbols
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawGrid
 </UL>
 
-<P><STRONG><a name="[95]"></a>ProcessDelay</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, stm32f7_echo.o(.text.ProcessDelay))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ProcessDelay
+<P><STRONG><a name="[95]"></a>ProcessDelay</STRONG> (Thumb, 88 bytes, Stack size 20 bytes, stm32f7_echo.o(.text.ProcessDelay))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = ProcessDelay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_AUDIO_IN_TransferComplete_CallBack
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_AUDIO_IN_HalfTransfer_CallBack

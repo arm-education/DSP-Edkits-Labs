@@ -3,18 +3,23 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-#define SOURCE_FILE_NAME "stm32f7_loop_DMA.c"
-#define AUDIO_FREQ           16000u
-#define AUDIO_IN_BIT_RES     16u
-#define AUDIO_IN_CHANNEL_NBR 1u
-#define RECORD_DURATION      10u 
-#define RECORD_SAMPLES       (AUDIO_FREQ * RECORD_DURATION * AUDIO_IN_CHANNEL_NBR)
+#define SOURCE_FILE_NAME       "stm32f7_loop_DMA.c"
+
+#define AUDIO_FREQ                16000u
+#define AUDIO_IN_BIT_RES          16u
+#define AUDIO_IN_CHANNEL_NBR      2u      
+#define BLOCK_SAMPLES_PER_CH      512u    
+#define BLOCK_SAMPLES_TOTAL       (BLOCK_SAMPLES_PER_CH * AUDIO_IN_CHANNEL_NBR)
+#define BUF_SAMPLES               (BLOCK_SAMPLES_TOTAL * 2u) 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-static uint16_t RecordBuffer[RECORD_SAMPLES];
-static __IO uint8_t RecordComplete = 0;
-static __IO uint8_t PlayComplete   = 0;
+static __attribute__((aligned(32))) uint16_t InBuf[BUF_SAMPLES];
+static __attribute__((aligned(32))) uint16_t OutBuf[BUF_SAMPLES];
 
+static __IO uint8_t InHalfComplete  = 0;
+static __IO uint8_t InFullComplete  = 0;
+static __IO uint8_t OutHalfComplete = 0;
+static __IO uint8_t OutFullComplete = 0;
 /* Private function prototypes -----------------------------------------------*/
 static void MPU_Config(void);
 static void SystemClock_Config(void);
@@ -23,14 +28,14 @@ static void Error_Handler(void);
 void BSP_AUDIO_OUT_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t AudioFreq, void *Params);
 
 /* Private functions ---------------------------------------------------------*/
-void BSP_AUDIO_IN_TransferComplete_CallBack(void)
+void BSP_AUDIO_IN_HalfTransfer_CallBack(void)
 {
-    RecordComplete = 1;
+  memcpy(OutBuf, InBuf, BLOCK_SAMPLES_TOTAL * sizeof(uint16_t));
 }
 
-void BSP_AUDIO_OUT_TransferComplete_CallBack(void)
-{	
-		PlayComplete = 1;
+void BSP_AUDIO_IN_TransferComplete_CallBack(void)
+{
+  memcpy(OutBuf + BLOCK_SAMPLES_TOTAL, InBuf  + BLOCK_SAMPLES_TOTAL, BLOCK_SAMPLES_TOTAL * sizeof(uint16_t));
 }
 
 int main(void)
@@ -48,27 +53,29 @@ int main(void)
 	
 	stm32f7_LCD_init(AUDIO_FREQ, SOURCE_FILE_NAME, NOGRAPH);
 	
-  /* Infinite loop */
-  while (1)
+  if (BSP_AUDIO_IN_OUT_Init(INPUT_DEVICE_DIGITAL_MICROPHONE_2,
+                            OUTPUT_DEVICE_HEADPHONE,
+                            AUDIO_FREQ,
+                            AUDIO_IN_BIT_RES,
+                            AUDIO_IN_CHANNEL_NBR) != AUDIO_OK)
   {
-		/* Start record */
-		BSP_AUDIO_IN_InitEx(INPUT_DEVICE_DIGITAL_MICROPHONE_2, AUDIO_FREQ, AUDIO_IN_BIT_RES, AUDIO_IN_CHANNEL_NBR);
-		BSP_AUDIO_IN_Record(RecordBuffer, RECORD_SAMPLES);
-		while (RecordComplete == 0);
-		BSP_AUDIO_IN_Stop(CODEC_PDWN_SW);
-		RecordComplete = 0;
-
-		/* Start playback */
-		BSP_AUDIO_OUT_Init(OUTPUT_DEVICE_HEADPHONE, 70, AUDIO_FREQ);
-
-		/* Force 2-slot TDM */
-		BSP_AUDIO_OUT_SetAudioFrameSlot(CODEC_AUDIOFRAME_SLOT_02);
-
-		BSP_AUDIO_OUT_Play(RecordBuffer, RECORD_SAMPLES * sizeof(uint16_t));
-		while (PlayComplete == 0);
-		BSP_AUDIO_OUT_Stop(CODEC_PDWN_SW);
-		PlayComplete = 0;
+    Error_Handler();
   }
+
+  BSP_AUDIO_OUT_SetAudioFrameSlot(CODEC_AUDIOFRAME_SLOT_02);
+
+  if (BSP_AUDIO_OUT_Play(OutBuf, sizeof(OutBuf)) != AUDIO_OK)
+  {
+    Error_Handler();
+  }
+
+  /* Start IN with ping-pong buffer. Size is in HALF-WORDS (uint16_t). */
+  if (BSP_AUDIO_IN_Record(InBuf, BUF_SAMPLES) != AUDIO_OK)
+  {
+    Error_Handler();
+  }
+
+  while (1);
 }
 
 /**

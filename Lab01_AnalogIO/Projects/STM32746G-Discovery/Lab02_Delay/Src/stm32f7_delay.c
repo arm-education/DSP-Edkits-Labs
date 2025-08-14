@@ -4,63 +4,55 @@
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 #define SOURCE_FILE_NAME "stm32f7_delay.c"
-
-/* Audio parameters */
-#define AUDIO_FREQ            16000u
-#define AUDIO_IN_BIT_RES      16u
-#define AUDIO_IN_CHANNEL_NBR  1u
-
-/* Delay parameters */
-#define DELAY_MS              500u
-#define DELAY_BUF_SIZE       	((AUDIO_FREQ * DELAY_MS) / 1000u)
-
-/* Recording buffer (for entire capture) */
-#define RECORD_DURATION       5u
-#define RECORD_SAMPLES        (AUDIO_FREQ * RECORD_DURATION)
+#define AUDIO_FREQ                16000u
+#define AUDIO_IN_BIT_RES          16u
+#define AUDIO_IN_CHANNEL_NBR      2u      
+#define BLOCK_SAMPLES_PER_CH      512u    
+#define BLOCK_SAMPLES_TOTAL       (BLOCK_SAMPLES_PER_CH * AUDIO_IN_CHANNEL_NBR)
+#define BUF_SAMPLES               (BLOCK_SAMPLES_TOTAL * 2u) 
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-static int16_t  RecordBuffer[RECORD_SAMPLES];
-static int16_t  DelayBuffer[DELAY_BUF_SIZE];
-static uint32_t bufptr = 0;
+static __attribute__((aligned(32))) uint16_t InBuf[BUF_SAMPLES];
+static __attribute__((aligned(32))) uint16_t OutBuf[BUF_SAMPLES];
+static __attribute__((aligned(32))) uint16_t DelayBuf[BUF_SAMPLES];
 
-static __IO uint8_t RecordComplete = 0;
-static __IO uint8_t PlayComplete   = 0;
+static __IO uint8_t InHalfComplete  = 0;
+static __IO uint8_t InFullComplete  = 0;
+static __IO uint8_t OutHalfComplete = 0;
+static __IO uint8_t OutFullComplete = 0;
+
+static uint32_t bufptr;
 
 /* Private function prototypes -----------------------------------------------*/
 static void MPU_Config(void);
 static void SystemClock_Config(void);
 static void CPU_CACHE_Enable(void);
 static void Error_Handler(void);
-static void ProcessDelay(int16_t *buffer, uint32_t length);
+static void ProcessDelay(const uint16_t *in, uint16_t *out, uint32_t length);
 void BSP_AUDIO_OUT_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t AudioFreq, void *Params);
 
 /* Private functions ---------------------------------------------------------*/
+void BSP_AUDIO_IN_HalfTransfer_CallBack(void)
+{
+  ProcessDelay(InBuf, OutBuf, BLOCK_SAMPLES_TOTAL);
+}
+
 void BSP_AUDIO_IN_TransferComplete_CallBack(void)
 {
-    RecordComplete = 1;
+  ProcessDelay(InBuf + BLOCK_SAMPLES_TOTAL, OutBuf + BLOCK_SAMPLES_TOTAL, BLOCK_SAMPLES_TOTAL);
 }
 
-void BSP_AUDIO_OUT_TransferComplete_CallBack(void)
+static void ProcessDelay(const uint16_t *in, uint16_t *out, uint32_t length)
 {
-    PlayComplete = 1;
-}
+	for (uint32_t i = 0; i < length; i++) {
+			int16_t delayed = DelayBuf[bufptr];
+			int32_t sum = (int32_t)in[i] + (int32_t)delayed;
 
-static void ProcessDelay(int16_t *buffer, uint32_t length)
-{
-    for (uint32_t i = 0; i < length; i++) {
-        int16_t in = buffer[i];
-        int16_t delayed = DelayBuffer[bufptr];
-        int32_t sum = (int32_t)in + delayed;
-
-        /* clamp to 16-bit */
-        if (sum >  32767) sum =  32767;
-        if (sum < -32768) sum = -32768;
-
-        buffer[i] = (int16_t)sum;
-        DelayBuffer[bufptr] = in;
-        bufptr = (bufptr + 1) % DELAY_BUF_SIZE;
-    }
+			out[i] = (int16_t)sum;    
+			DelayBuf[bufptr] = in[i];
+			bufptr = (bufptr + 1) % BUF_SAMPLES;
+	}
 }
 
 int main(void)
@@ -77,29 +69,31 @@ int main(void)
   SystemClock_Config();
 	
 	stm32f7_LCD_init(AUDIO_FREQ, SOURCE_FILE_NAME, NOGRAPH);
+
+  if (BSP_AUDIO_IN_OUT_Init(INPUT_DEVICE_DIGITAL_MICROPHONE_2,
+                            OUTPUT_DEVICE_HEADPHONE,
+                            AUDIO_FREQ,
+                            AUDIO_IN_BIT_RES,
+                            AUDIO_IN_CHANNEL_NBR) != AUDIO_OK)
+  {
+    Error_Handler();
+  }
+	
+  BSP_AUDIO_OUT_SetAudioFrameSlot(CODEC_AUDIOFRAME_SLOT_02);
+
+  if (BSP_AUDIO_OUT_Play(OutBuf, sizeof(OutBuf)) != AUDIO_OK)
+  {
+    Error_Handler();
+  }
+
+  /* Start IN with ping-pong buffer. Size is in HALF-WORDS (uint16_t). */
+  if (BSP_AUDIO_IN_Record(InBuf, BUF_SAMPLES) != AUDIO_OK)
+  {
+    Error_Handler();
+  }
 	
   /* Infinite loop */
-  while (1)
-  {
-			/* 1) DMA-record RECORD_SAMPLES @16 kHz from digital mic */
-			BSP_AUDIO_IN_InitEx(INPUT_DEVICE_DIGITAL_MICROPHONE_2, AUDIO_FREQ, AUDIO_IN_BIT_RES, AUDIO_IN_CHANNEL_NBR);
-			BSP_AUDIO_IN_Record((uint16_t*)RecordBuffer, RECORD_SAMPLES);
-			while (!RecordComplete);
-			BSP_AUDIO_IN_Stop(CODEC_PDWN_SW);
-			RecordComplete = 0;
-
-			/* 2) apply 500 ms delay+feedback */
-			ProcessDelay(RecordBuffer, RECORD_SAMPLES);
-
-			/* 3) DMA-play back the processed buffer at 16 kHz */
-			BSP_AUDIO_OUT_Init(OUTPUT_DEVICE_HEADPHONE, 70, AUDIO_FREQ);
-			/* force 2-slot TDM so buffer aligns 1:1 with audio frames */
-			BSP_AUDIO_OUT_SetAudioFrameSlot(CODEC_AUDIOFRAME_SLOT_02);
-			BSP_AUDIO_OUT_Play((uint16_t*)RecordBuffer, RECORD_SAMPLES * sizeof(int16_t));
-			while (!PlayComplete);
-			BSP_AUDIO_OUT_Stop(CODEC_PDWN_SW);
-			PlayComplete = 0;
-  }
+  while (1);
 }
 
 /**

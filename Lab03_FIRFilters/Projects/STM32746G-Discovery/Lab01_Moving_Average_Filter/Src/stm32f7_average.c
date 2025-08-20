@@ -1,49 +1,80 @@
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f7_sine.h"
-
-#define SOURCE_FILE_NAME "stm32f7_sine.c"
+#include "stm32f7_average.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-/* Audio parameters */
-#define AUDIO_FREQ      8000u
-#define BUF_LEN         32u
-
+#define SOURCE_FILE_NAME "stm32f7_average.c"
+#define AUDIO_FREQ                16000u
+#define AUDIO_IN_BIT_RES          16u
+#define AUDIO_IN_CHANNEL_NBR      2u      
+#define BLOCK_SAMPLES_PER_CH      512u    
+#define BLOCK_SAMPLES_TOTAL       (BLOCK_SAMPLES_PER_CH * AUDIO_IN_CHANNEL_NBR)
+#define BUF_SAMPLES               (BLOCK_SAMPLES_TOTAL * 2u) 
+#define N                         10u
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-float32_t sine_frequency = 367.0f;
-float32_t amplitude      = 10000.0f;
-float32_t theta          = 0.0f;
-float32_t theta_increment;
-static int16_t stereo_buf[BUF_LEN * 2];
+static __attribute__((aligned(32))) uint16_t InBuf[BUF_SAMPLES];
+static __attribute__((aligned(32))) uint16_t OutBuf[BUF_SAMPLES];
+
+static __IO uint8_t InHalfComplete  = 0;
+static __IO uint8_t InFullComplete  = 0;
+static __IO uint8_t OutHalfComplete = 0;
+static __IO uint8_t OutFullComplete = 0;
+
+static uint32_t bufptr;
+
+float32_t h[N];
+static float32_t xL[N];
+static float32_t xR[N];
 
 /* Private function prototypes -----------------------------------------------*/
 static void MPU_Config(void);
 static void SystemClock_Config(void);
-static void Error_Handler(void);
 static void CPU_CACHE_Enable(void);
+static void Error_Handler(void);
+static void ProcessAverage(const uint16_t *in, uint16_t *out, uint32_t length);
+void BSP_AUDIO_OUT_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t AudioFreq, void *Params);
 
 /* Private functions ---------------------------------------------------------*/
-static void update_buffer(int start, int end)
+void BSP_AUDIO_IN_HalfTransfer_CallBack(void)
 {
-  for (int i = start; i < end; i++) {
-		int16_t s = (int16_t)(amplitude * arm_sin_f32(theta));
-		theta += theta_increment;
-		if (theta >= 2*PI) theta -= 2*PI;
-		stereo_buf[2*i]   = s;
-		stereo_buf[2*i+1] = s;
-		plotSamplesIntr(s,32);
+  ProcessAverage(InBuf, OutBuf, BLOCK_SAMPLES_TOTAL);
+}
+
+void BSP_AUDIO_IN_TransferComplete_CallBack(void)
+{
+  ProcessAverage(InBuf + BLOCK_SAMPLES_TOTAL, OutBuf + BLOCK_SAMPLES_TOTAL, BLOCK_SAMPLES_TOTAL);
+}
+
+static inline int16_t sat16f(float32_t y){
+  if (y >  32767.0f) return  32767;
+  if (y < -32768.0f) return -32768;
+  return (int16_t)y;
+}
+
+static void ProcessAverage(const uint16_t *in, uint16_t *out, uint32_t length)
+{
+  for (uint32_t i = 0; i < length; i += AUDIO_IN_CHANNEL_NBR)
+  {
+    // ---- Left ----
+    float32_t ynL = 0.0f;
+    for (uint32_t k = N - 1; k > 0; k--) xL[k] = xL[k - 1];
+    int16_t sL = (int16_t)in[i + 0];
+    xL[0] = (float32_t)sL;
+    for (uint32_t k = 0; k < N; k++) ynL += h[k] * xL[k];
+
+    // ---- Right (Comment this section if you're using mono input) ----
+    float32_t ynR = 0.0f;
+    for (uint32_t k = N - 1; k > 0; k--) xR[k] = xR[k - 1];
+    int16_t sR = (int16_t)in[i + 1];
+    xR[0] = (float32_t)sR;
+    for (uint32_t k = 0; k < N; k++) ynR += h[k] * xR[k];
+
+    out[i + 0] = (uint16_t)sat16f(ynL);
+    out[i + 1] = (uint16_t)sat16f(ynR);
+    // If you’re using mono input, use the code below.
+    // out[i + 1] = out[i + 0];
   }
-}
-
-void BSP_AUDIO_OUT_HalfTransfer_CallBack(void)
-{
-  update_buffer(0, BUF_LEN/2);
-}
-
-void BSP_AUDIO_OUT_TransferComplete_CallBack(void)
-{
-  update_buffer(BUF_LEN/2, BUF_LEN);
 }
 
 int main(void)
@@ -59,26 +90,36 @@ int main(void)
   /* Configure the System clock to have a frequency of 216 MHz */
   SystemClock_Config();
 	
-	stm32f7_LCD_init(AUDIO_FREQ, SOURCE_FILE_NAME, GRAPH);
-	
-  theta_increment = 2 * PI * sine_frequency / AUDIO_FREQ;
+	stm32f7_LCD_init(AUDIO_FREQ, SOURCE_FILE_NAME, NOGRAPH);
 
-  update_buffer(0, BUF_LEN);
-
-	if (BSP_AUDIO_OUT_Init(OUTPUT_DEVICE_HEADPHONE, 50, AUDIO_FREQ) != AUDIO_OK) {
-		Error_Handler();
-	}
-
-  BSP_AUDIO_OUT_SetAudioFrameSlot(CODEC_AUDIOFRAME_SLOT_02);
-	
-  // Start DMA in circular mode:
-	if ((BSP_AUDIO_OUT_Play((uint16_t*)stereo_buf, BUF_LEN * 2 * sizeof(int16_t))) != AUDIO_OK) {
-		Error_Handler();
-	}
-  /* Infinite loop */
-  while (1)
+  for (int i=0; i<N; i++)
   {
+    h[i] = 1.0 / N;
   }
+  if (BSP_AUDIO_IN_OUT_Init(INPUT_DEVICE_INPUT_LINE_1,
+                            OUTPUT_DEVICE_HEADPHONE,
+                            AUDIO_FREQ,
+                            AUDIO_IN_BIT_RES,
+                            AUDIO_IN_CHANNEL_NBR) != AUDIO_OK)
+  {
+    Error_Handler();
+  }
+	
+  BSP_AUDIO_OUT_SetAudioFrameSlot(CODEC_AUDIOFRAME_SLOT_02);
+
+  if (BSP_AUDIO_OUT_Play(OutBuf, sizeof(OutBuf)) != AUDIO_OK)
+  {
+    Error_Handler();
+  }
+
+  /* Start IN with ping-pong buffer. Size is in HALF-WORDS (uint16_t). */
+  if (BSP_AUDIO_IN_Record(InBuf, BUF_SAMPLES) != AUDIO_OK)
+  {
+    Error_Handler();
+  }
+	
+  /* Infinite loop */
+  while (1);
 }
 
 /**
@@ -142,25 +183,24 @@ static void SystemClock_Config(void)
 
 void BSP_AUDIO_OUT_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t AudioFreq, void *Params)
 {
-    RCC_PeriphCLKInitTypeDef clkcfg;
-    HAL_RCCEx_GetPeriphCLKConfig(&clkcfg);
+    RCC_PeriphCLKInitTypeDef clk;
+    HAL_RCCEx_GetPeriphCLKConfig(&clk);
 
-    clkcfg.PeriphClockSelection = RCC_PERIPHCLK_SAI2;
-    clkcfg.Sai2ClockSelection    = RCC_SAI2CLKSOURCE_PLLI2S;
+    clk.PeriphClockSelection = RCC_PERIPHCLK_SAI2;
+    clk.Sai2ClockSelection    = RCC_SAI2CLKSOURCE_PLLI2S;
 
-    if (AudioFreq == AUDIO_FREQUENCY_8K) {
-        /* VCO = (HSE/PLLM)*PLLI2SN = 25/25*256 = 256 MHz */
-        clkcfg.PLLI2S.PLLI2SN = 256;
-        clkcfg.PLLI2S.PLLI2SQ =   5; /* 256/5 = 51.2 MHz */
-        clkcfg.PLLI2SDivQ     =  25; /* 51.2/25 = 2.048 MHz */
+    if (AudioFreq == AUDIO_FREQUENCY_16K) {
+        clk.PLLI2S.PLLI2SN = 344;  // VCO = 344 MHz
+        clk.PLLI2S.PLLI2SQ = 7;    //  1st = 49.14 MHz
+        clk.PLLI2SDivQ     = 12;   //  MCLK � 4.095 MHz
     } else {
-        /* ST defaults for 11/22/44 kHz */
-        clkcfg.PLLI2S.PLLI2SN = 429;
-        clkcfg.PLLI2S.PLLI2SQ =   2;
-        clkcfg.PLLI2SDivQ     =  19;
+        /* ST default for 11/22/44 kHz */
+        clk.PLLI2S.PLLI2SN = 429;
+        clk.PLLI2S.PLLI2SQ = 2;
+        clk.PLLI2SDivQ     = 19;
     }
 
-    HAL_RCCEx_PeriphCLKConfig(&clkcfg);
+    HAL_RCCEx_PeriphCLKConfig(&clk);
 }
 
 /**

@@ -837,9 +837,9 @@
               <FilePath>..\Src\stm32f7_display.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f7_sine.c</FileName>
+              <FileName>stm32f7_average.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\stm32f7_sine.c</FilePath>
+              <FilePath>..\Src\stm32f7_average.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -884,7 +884,7 @@
             <File>
               <FileName>stm32746g_discovery_audio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../../../../Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_audio.c</FilePath>
+              <FilePath>..\..\..\..\Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_audio.c</FilePath>
             </File>
             <File>
               <FileName>stm32746g_discovery_qspi.c</FileName>
@@ -1693,9 +1693,9 @@
               <FilePath>..\Src\stm32f7_display.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f7_sine.c</FileName>
+              <FileName>stm32f7_average.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\stm32f7_sine.c</FilePath>
+              <FilePath>..\Src\stm32f7_average.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1740,7 +1740,7 @@
             <File>
               <FileName>stm32746g_discovery_audio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../../../../Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_audio.c</FilePath>
+              <FilePath>..\..\..\..\Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_audio.c</FilePath>
             </File>
             <File>
               <FileName>stm32746g_discovery_qspi.c</FileName>

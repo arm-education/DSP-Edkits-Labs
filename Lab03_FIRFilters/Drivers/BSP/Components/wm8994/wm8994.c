@@ -308,10 +308,18 @@ uint32_t wm8994_Init(uint16_t DeviceAddr, uint16_t OutputInputDevice, uint8_t Vo
       counter += CODEC_IO_Write(DeviceAddr, 0x28, 0x0011);
 
       /* Disable mute on IN1L_TO_MIXINL and +30dB on IN1L PGA output */
-      counter += CODEC_IO_Write(DeviceAddr, 0x29, 0x0035);
+      //counter += CODEC_IO_Write(DeviceAddr, 0x29, 0x0035);
+
+      /* CHANGE! MIXOUTR_MIXINR_VOL set to 0 (mute)
+       * +30db removed : 0x0020 instead of 0x0035  */
+      counter += CODEC_IO_Write(DeviceAddr, 0x29, 0x0020);
 
       /* Disable mute on IN1R_TO_MIXINL, Gain = +30dB */
-      counter += CODEC_IO_Write(DeviceAddr, 0x2A, 0x0035);
+      //counter += CODEC_IO_Write(DeviceAddr, 0x2A, 0x0035);
+
+      /* CHANGE! MIXOUTL_MIXINL_VOL set to 0 (mute)
+       * +30db removed : 0x0020 instead of 0x0035  */
+      counter += CODEC_IO_Write(DeviceAddr, 0x2A, 0x0020);
 
       /* Enable AIF1ADC1 (Left), Enable AIF1ADC1 (Right)
        * Enable Left ADC, Enable Right ADC */

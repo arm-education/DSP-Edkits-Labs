@@ -4,7 +4,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 #define SOURCE_FILE_NAME "stm32f7_average.c"
-#define AUDIO_FREQ                16000u
+#define AUDIO_FREQ                AUDIO_FREQUENCY_16K
 #define AUDIO_IN_BIT_RES          16u
 #define AUDIO_IN_CHANNEL_NBR      2u      
 #define BLOCK_SAMPLES_PER_CH      512u    
@@ -72,8 +72,8 @@ static void ProcessAverage(const uint16_t *in, uint16_t *out, uint32_t length)
 
     out[i + 0] = (uint16_t)sat16f(ynL);
     out[i + 1] = (uint16_t)sat16f(ynR);
-    // If you’re using mono input, use the code below.
-    // out[i + 1] = out[i + 0];
+    // If you’re using mono input, comment the line above and use the code below.
+		//out[i + 1] = out[i + 0];
   }
 }
 
@@ -96,6 +96,7 @@ int main(void)
   {
     h[i] = 1.0 / N;
   }
+
   if (BSP_AUDIO_IN_OUT_Init(INPUT_DEVICE_INPUT_LINE_1,
                             OUTPUT_DEVICE_HEADPHONE,
                             AUDIO_FREQ,
@@ -179,28 +180,6 @@ static void SystemClock_Config(void)
   {
     Error_Handler();
   }
-}
-
-void BSP_AUDIO_OUT_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t AudioFreq, void *Params)
-{
-    RCC_PeriphCLKInitTypeDef clk;
-    HAL_RCCEx_GetPeriphCLKConfig(&clk);
-
-    clk.PeriphClockSelection = RCC_PERIPHCLK_SAI2;
-    clk.Sai2ClockSelection    = RCC_SAI2CLKSOURCE_PLLI2S;
-
-    if (AudioFreq == AUDIO_FREQUENCY_16K) {
-        clk.PLLI2S.PLLI2SN = 344;  // VCO = 344 MHz
-        clk.PLLI2S.PLLI2SQ = 7;    //  1st = 49.14 MHz
-        clk.PLLI2SDivQ     = 12;   //  MCLK � 4.095 MHz
-    } else {
-        /* ST default for 11/22/44 kHz */
-        clk.PLLI2S.PLLI2SN = 429;
-        clk.PLLI2S.PLLI2SQ = 2;
-        clk.PLLI2SDivQ     = 19;
-    }
-
-    HAL_RCCEx_PeriphCLKConfig(&clk);
 }
 
 /**

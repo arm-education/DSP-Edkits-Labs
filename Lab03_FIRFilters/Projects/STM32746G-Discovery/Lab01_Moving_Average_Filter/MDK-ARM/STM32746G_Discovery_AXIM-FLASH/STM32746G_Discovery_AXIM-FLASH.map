@@ -18139,25 +18139,25 @@ Image Symbol Table
     ColdStartup                              0x20000085   Data           1  wm8994.o(.bss..L_MergedGlobals)
     [Anonymous Symbol]                       0x20000088   Section        0  stm32f7_display.o(.bss..L_MergedGlobals)
     [Anonymous Symbol]                       0x200000a4   Section        0  stm32f7_average.o(.bss..L_MergedGlobals)
-    xL                                       0x200000cc   Data          40  stm32f7_average.o(.bss..L_MergedGlobals)
-    xR                                       0x200000f4   Data          40  stm32f7_average.o(.bss..L_MergedGlobals)
-    ActiveLayer                              0x2000011c   Data           4  stm32746g_discovery_lcd.o(.bss..L_MergedGlobals)
-    [Anonymous Symbol]                       0x2000011c   Section        0  stm32746g_discovery_lcd.o(.bss..L_MergedGlobals)
-    DrawProp                                 0x20000120   Data          24  stm32746g_discovery_lcd.o(.bss..L_MergedGlobals)
-    hDma2dHandler                            0x20000138   Data          64  stm32746g_discovery_lcd.o(.bss..L_MergedGlobals)
-    BSP_SDRAM_Init.sdramstatus               0x20000178   Data           1  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
-    [Anonymous Symbol]                       0x20000178   Section        0  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
-    BSP_SDRAM_DeInit.sdramstatus             0x20000179   Data           1  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
-    Command                                  0x2000017c   Data          16  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
-    Timing                                   0x2000018c   Data          28  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
-    BSP_AUDIO_IN_MspInit.hdma_sai_rx         0x200001dc   Data          96  stm32746g_discovery_audio.o(.bss.BSP_AUDIO_IN_MspInit.hdma_sai_rx)
-    [Anonymous Symbol]                       0x200001dc   Section        0  stm32746g_discovery_audio.o(.bss.BSP_AUDIO_IN_MspInit.hdma_sai_rx)
-    BSP_AUDIO_OUT_MspInit.hdma_sai_tx        0x2000023c   Data          96  stm32746g_discovery_audio.o(.bss.BSP_AUDIO_OUT_MspInit.hdma_sai_tx)
-    [Anonymous Symbol]                       0x2000023c   Section        0  stm32746g_discovery_audio.o(.bss.BSP_AUDIO_OUT_MspInit.hdma_sai_tx)
-    BSP_LCD_ClockConfig.periph_clk_init_struct 0x2000029c   Data         132  stm32746g_discovery_lcd.o(.bss.BSP_LCD_ClockConfig.periph_clk_init_struct)
-    [Anonymous Symbol]                       0x2000029c   Section        0  stm32746g_discovery_lcd.o(.bss.BSP_LCD_ClockConfig.periph_clk_init_struct)
-    BSP_SDRAM_MspInit.dma_handle             0x20000320   Data          96  stm32746g_discovery_sdram.o(.bss.BSP_SDRAM_MspInit.dma_handle)
-    [Anonymous Symbol]                       0x20000320   Section        0  stm32746g_discovery_sdram.o(.bss.BSP_SDRAM_MspInit.dma_handle)
+    xL                                       0x200000c8   Data          36  stm32f7_average.o(.bss..L_MergedGlobals)
+    xR                                       0x200000ec   Data          36  stm32f7_average.o(.bss..L_MergedGlobals)
+    ActiveLayer                              0x20000110   Data           4  stm32746g_discovery_lcd.o(.bss..L_MergedGlobals)
+    [Anonymous Symbol]                       0x20000110   Section        0  stm32746g_discovery_lcd.o(.bss..L_MergedGlobals)
+    DrawProp                                 0x20000114   Data          24  stm32746g_discovery_lcd.o(.bss..L_MergedGlobals)
+    hDma2dHandler                            0x2000012c   Data          64  stm32746g_discovery_lcd.o(.bss..L_MergedGlobals)
+    BSP_SDRAM_Init.sdramstatus               0x2000016c   Data           1  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
+    [Anonymous Symbol]                       0x2000016c   Section        0  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
+    BSP_SDRAM_DeInit.sdramstatus             0x2000016d   Data           1  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
+    Command                                  0x20000170   Data          16  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
+    Timing                                   0x20000180   Data          28  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
+    BSP_AUDIO_IN_MspInit.hdma_sai_rx         0x200001d0   Data          96  stm32746g_discovery_audio.o(.bss.BSP_AUDIO_IN_MspInit.hdma_sai_rx)
+    [Anonymous Symbol]                       0x200001d0   Section        0  stm32746g_discovery_audio.o(.bss.BSP_AUDIO_IN_MspInit.hdma_sai_rx)
+    BSP_AUDIO_OUT_MspInit.hdma_sai_tx        0x20000230   Data          96  stm32746g_discovery_audio.o(.bss.BSP_AUDIO_OUT_MspInit.hdma_sai_tx)
+    [Anonymous Symbol]                       0x20000230   Section        0  stm32746g_discovery_audio.o(.bss.BSP_AUDIO_OUT_MspInit.hdma_sai_tx)
+    BSP_LCD_ClockConfig.periph_clk_init_struct 0x20000290   Data         132  stm32746g_discovery_lcd.o(.bss.BSP_LCD_ClockConfig.periph_clk_init_struct)
+    [Anonymous Symbol]                       0x20000290   Section        0  stm32746g_discovery_lcd.o(.bss.BSP_LCD_ClockConfig.periph_clk_init_struct)
+    BSP_SDRAM_MspInit.dma_handle             0x20000314   Data          96  stm32746g_discovery_sdram.o(.bss.BSP_SDRAM_MspInit.dma_handle)
+    [Anonymous Symbol]                       0x20000314   Section        0  stm32746g_discovery_sdram.o(.bss.BSP_SDRAM_MspInit.dma_handle)
     InBuf                                    0x20000380   Data        4096  stm32f7_average.o(.bss.InBuf)
     [Anonymous Symbol]                       0x20000380   Section        0  stm32f7_average.o(.bss.InBuf)
     OutBuf                                   0x20001380   Data        4096  stm32f7_average.o(.bss.OutBuf)
@@ -18506,8 +18506,8 @@ Image Symbol Table
     update_flag                              0x20000098   Data           4  stm32f7_display.o(.bss..L_MergedGlobals)
     fixymin                                  0x2000009c   Data           4  stm32f7_display.o(.bss..L_MergedGlobals)
     fixymax                                  0x200000a0   Data           4  stm32f7_display.o(.bss..L_MergedGlobals)
-    h                                        0x200000a4   Data          40  stm32f7_average.o(.bss..L_MergedGlobals)
-    sdramHandle                              0x200001a8   Data          52  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
+    h                                        0x200000a4   Data          36  stm32f7_average.o(.bss..L_MergedGlobals)
+    sdramHandle                              0x2000019c   Data          52  stm32746g_discovery_sdram.o(.bss..L_MergedGlobals)
     audio_drv                                0x20002380   Data           4  stm32746g_discovery_audio.o(.bss.audio_drv)
     hLtdcHandler                             0x200023d8   Data         168  stm32746g_discovery_lcd.o(.bss.hLtdcHandler)
     haudio_in_sai                            0x20002480   Data         132  stm32746g_discovery_audio.o(.bss.haudio_in_sai)
@@ -18848,13 +18848,14 @@ Memory Map of the image
     0x20000080        -       0x00000006   Zero   RW          109    .bss..L_MergedGlobals  wm8994.o
     0x20000086   0x08029804   0x00000002   PAD
     0x20000088        -       0x0000001c   Zero   RW         4791    .bss..L_MergedGlobals  stm32f7_display.o
-    0x200000a4        -       0x00000078   Zero   RW         4815    .bss..L_MergedGlobals  stm32f7_average.o
-    0x2000011c        -       0x0000005c   Zero   RW         5004    .bss..L_MergedGlobals  stm32746g_discovery_lcd.o
-    0x20000178        -       0x00000064   Zero   RW         5341    .bss..L_MergedGlobals  stm32746g_discovery_sdram.o
-    0x200001dc        -       0x00000060   Zero   RW         5199    .bss.BSP_AUDIO_IN_MspInit.hdma_sai_rx  stm32746g_discovery_audio.o
-    0x2000023c        -       0x00000060   Zero   RW         5198    .bss.BSP_AUDIO_OUT_MspInit.hdma_sai_tx  stm32746g_discovery_audio.o
-    0x2000029c        -       0x00000084   Zero   RW         5003    .bss.BSP_LCD_ClockConfig.periph_clk_init_struct  stm32746g_discovery_lcd.o
-    0x20000320        -       0x00000060   Zero   RW         5339    .bss.BSP_SDRAM_MspInit.dma_handle  stm32746g_discovery_sdram.o
+    0x200000a4        -       0x0000006c   Zero   RW         4815    .bss..L_MergedGlobals  stm32f7_average.o
+    0x20000110        -       0x0000005c   Zero   RW         5004    .bss..L_MergedGlobals  stm32746g_discovery_lcd.o
+    0x2000016c        -       0x00000064   Zero   RW         5341    .bss..L_MergedGlobals  stm32746g_discovery_sdram.o
+    0x200001d0        -       0x00000060   Zero   RW         5199    .bss.BSP_AUDIO_IN_MspInit.hdma_sai_rx  stm32746g_discovery_audio.o
+    0x20000230        -       0x00000060   Zero   RW         5198    .bss.BSP_AUDIO_OUT_MspInit.hdma_sai_tx  stm32746g_discovery_audio.o
+    0x20000290        -       0x00000084   Zero   RW         5003    .bss.BSP_LCD_ClockConfig.periph_clk_init_struct  stm32746g_discovery_lcd.o
+    0x20000314        -       0x00000060   Zero   RW         5339    .bss.BSP_SDRAM_MspInit.dma_handle  stm32746g_discovery_sdram.o
+    0x20000374   0x08029804   0x0000000c   PAD
     0x20000380        -       0x00001000   Zero   RW         4812    .bss.InBuf          stm32f7_average.o
     0x20001380        -       0x00001000   Zero   RW         4813    .bss.OutBuf         stm32f7_average.o
     0x20002380        -       0x00000004   Zero   RW         5197    .bss.audio_drv      stm32746g_discovery_audio.o
@@ -18879,7 +18880,7 @@ Image component sizes
       1286         68          0          0        460      20358   stm32746g_discovery_audio.o
       1728         64      11020         24        392      30501   stm32746g_discovery_lcd.o
        628         32          0          0        196      10217   stm32746g_discovery_sdram.o
-       708         72          0          0       8312       6659   stm32f7_average.o
+       708         72          0          0       8300       6659   stm32f7_average.o
        522         96     140671          4         28      15042   stm32f7_display.o
        166         20          0          8          4       8375   stm32f7xx_hal.o
        308         32          0          0          0      11493   stm32f7xx_hal_cortex.o
@@ -18901,7 +18902,7 @@ Image component sizes
     ----------------------------------------------------------------------
      17292        712     152246        100      10540     284372   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        42          0          1          0         34          0   (incl. Padding)
+        42          0          1          0         46          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 

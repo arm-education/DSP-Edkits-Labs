@@ -64,17 +64,17 @@ static void ProcessAverage(const uint16_t *in, uint16_t *out, uint32_t length)
     xL[0] = (float32_t)sL;
     for (uint32_t k = 0; k < N; k++) ynL += h[k] * xL[k];
 
-    // // ---- Right (Comment this section if you're using mono input) ----
-    // float32_t ynR = 0.0f;
-    // for (uint32_t k = N - 1; k > 0; k--) xR[k] = xR[k - 1];
-    // int16_t sR = (int16_t)in[i + 1];
-    // xR[0] = (float32_t)sR;
-    // for (uint32_t k = 0; k < N; k++) ynR += h[k] * xR[k];
+    // ---- Right (Comment this section if you're using mono input) ----
+    float32_t ynR = 0.0f;
+    for (uint32_t k = N - 1; k > 0; k--) xR[k] = xR[k - 1];
+    int16_t sR = (int16_t)in[i + 1];
+    xR[0] = (float32_t)sR;
+    for (uint32_t k = 0; k < N; k++) ynR += h[k] * xR[k];
 
     out[i + 0] = (uint16_t)sat16f(ynL);
-    // out[i + 1] = (uint16_t)sat16f(ynR);
+    out[i + 1] = (uint16_t)sat16f(ynR);
     // If you’re using mono input, use the code below.
-    out[i + 1] = out[i + 0];
+    // out[i + 1] = out[i + 0];
   }
 }
 
@@ -92,11 +92,18 @@ int main(void)
   SystemClock_Config();
 	
 	stm32f7_LCD_init(AUDIO_FREQ, SOURCE_FILE_NAME, NOGRAPH);
+	
+	// static const float new_h[N] = {
+  //   0.001953125f, 0.017578125f, 0.070312500f, 0.164062500f, 0.246093750f,
+  //   0.246093750f, 0.164062500f, 0.070312500f, 0.017578125f, 0.001953125f
+	// };
 
   for (int i=0; i<N; i++)
   {
     h[i] = 1.0 / N;
+		// h[i] = new_h[i];
   }
+	
   if (BSP_AUDIO_IN_OUT_Init(INPUT_DEVICE_INPUT_LINE_1,
                             OUTPUT_DEVICE_HEADPHONE,
                             AUDIO_FREQ,

@@ -18116,44 +18116,44 @@ Image Symbol Table
     __arm_cp.3_0                             0x08003eb4   Number         4  stm32f7_average_prbs.o(.text.main)
     __arm_cp.3_1                             0x08003eb8   Number         4  stm32f7_average_prbs.o(.text.main)
     __arm_cp.3_2                             0x08003ebc   Number         4  stm32f7_average_prbs.o(.text.main)
-    main.new_h                               0x08003ed8   Number         0  stm32f7_average_prbs.o(.text.main)
-    __arm_cp.3_5                             0x08003f00   Number         4  stm32f7_average_prbs.o(.text.main)
-    __arm_cp.3_6                             0x08003f04   Number         4  stm32f7_average_prbs.o(.text.main)
-    __arm_cp.3_7                             0x08003f08   Number         4  stm32f7_average_prbs.o(.text.main)
-    [Anonymous Symbol]                       0x08003f0c   Section        0  stm32f7_prbs.o(.text.prbs)
-    __arm_cp.0_0                             0x08003f3c   Number         4  stm32f7_prbs.o(.text.prbs)
-    sat16f                                   0x08003f41   Thumb Code    52  stm32f7_average_prbs.o(.text.sat16f)
-    [Anonymous Symbol]                       0x08003f40   Section        0  stm32f7_average_prbs.o(.text.sat16f)
-    [Anonymous Symbol]                       0x08003f7c   Section        0  stm32f7_display.o(.text.stm32f7_LCD_init)
-    [Anonymous Symbol]                       0x08003fa6   Section        0  wm8994.o(.text.wm8994_DeInit)
-    [Anonymous Symbol]                       0x08003fac   Section        0  wm8994.o(.text.wm8994_Init)
-    [Anonymous Symbol]                       0x0800442c   Section        0  wm8994.o(.text.wm8994_Pause)
-    [Anonymous Symbol]                       0x08004444   Section        0  wm8994.o(.text.wm8994_Play)
-    [Anonymous Symbol]                       0x0800444e   Section        0  wm8994.o(.text.wm8994_ReadID)
-    [Anonymous Symbol]                       0x08004460   Section        0  wm8994.o(.text.wm8994_Reset)
-    __arm_cp.11_0                            0x08004478   Number         4  wm8994.o(.text.wm8994_Reset)
-    [Anonymous Symbol]                       0x0800447c   Section        0  wm8994.o(.text.wm8994_Resume)
-    [Anonymous Symbol]                       0x08004488   Section        0  wm8994.o(.text.wm8994_SetFrequency)
-    __arm_cp.7_0                             0x080044f0   Number         4  wm8994.o(.text.wm8994_SetFrequency)
-    [Anonymous Symbol]                       0x080044f4   Section        0  wm8994.o(.text.wm8994_SetMute)
-    __arm_cp.9_0                             0x0800452c   Number         4  wm8994.o(.text.wm8994_SetMute)
-    [Anonymous Symbol]                       0x08004530   Section        0  wm8994.o(.text.wm8994_SetOutputMode)
-    __arm_cp.10_0                            0x0800458c   Number         4  wm8994.o(.text.wm8994_SetOutputMode)
-    __arm_cp.10_1                            0x08004590   Number         4  wm8994.o(.text.wm8994_SetOutputMode)
-    __arm_cp.10_2                            0x08004594   Number         4  wm8994.o(.text.wm8994_SetOutputMode)
-    [Anonymous Symbol]                       0x08004598   Section        0  wm8994.o(.text.wm8994_SetVolume)
-    [Anonymous Symbol]                       0x08004684   Section        0  wm8994.o(.text.wm8994_Stop)
-    __arm_cp.6_0                             0x080046e4   Number         4  wm8994.o(.text.wm8994_Stop)
-    __arm_cp.6_1                             0x080046e8   Number         4  wm8994.o(.text.wm8994_Stop)
-    i.__scatterload_copy                     0x080046ec   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x080046fa   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x080046fc   Section       14  handlers.o(i.__scatterload_zeroinit)
-    [Anonymous Symbol]                       0x0800470a   Section        0  wm8994.o(.rodata..Lswitch.table.wm8994_SetOutputMode)
-    [Anonymous Symbol]                       0x08004710   Section        0  wm8994.o(.rodata..Lswitch.table.wm8994_SetOutputMode.1)
-    [Anonymous Symbol]                       0x08004716   Section        0  wm8994.o(.rodata..Lswitch.table.wm8994_SetOutputMode.2)
-    armlogo                                  0x08007238   Data       140671  stm32f7_display.o(.rodata.armlogo)
-    [Anonymous Symbol]                       0x08007238   Section        0  stm32f7_display.o(.rodata.armlogo)
-    [Anonymous Symbol]                       0x080297b8   Section        0  stm32f7xx_hal_ltdc.o(.rodata.cst32)
+    __arm_cp.3_4                             0x08003ed8   Number         4  stm32f7_average_prbs.o(.text.main)
+    __arm_cp.3_5                             0x08003edc   Number         4  stm32f7_average_prbs.o(.text.main)
+    __arm_cp.3_6                             0x08003ee0   Number         4  stm32f7_average_prbs.o(.text.main)
+    __arm_cp.3_7                             0x08003ee4   Number         4  stm32f7_average_prbs.o(.text.main)
+    [Anonymous Symbol]                       0x08003ee8   Section        0  stm32f7_prbs.o(.text.prbs)
+    __arm_cp.0_0                             0x08003f18   Number         4  stm32f7_prbs.o(.text.prbs)
+    sat16f                                   0x08003f1d   Thumb Code    52  stm32f7_average_prbs.o(.text.sat16f)
+    [Anonymous Symbol]                       0x08003f1c   Section        0  stm32f7_average_prbs.o(.text.sat16f)
+    [Anonymous Symbol]                       0x08003f58   Section        0  stm32f7_display.o(.text.stm32f7_LCD_init)
+    [Anonymous Symbol]                       0x08003f82   Section        0  wm8994.o(.text.wm8994_DeInit)
+    [Anonymous Symbol]                       0x08003f88   Section        0  wm8994.o(.text.wm8994_Init)
+    [Anonymous Symbol]                       0x08004408   Section        0  wm8994.o(.text.wm8994_Pause)
+    [Anonymous Symbol]                       0x08004420   Section        0  wm8994.o(.text.wm8994_Play)
+    [Anonymous Symbol]                       0x0800442a   Section        0  wm8994.o(.text.wm8994_ReadID)
+    [Anonymous Symbol]                       0x0800443c   Section        0  wm8994.o(.text.wm8994_Reset)
+    __arm_cp.11_0                            0x08004454   Number         4  wm8994.o(.text.wm8994_Reset)
+    [Anonymous Symbol]                       0x08004458   Section        0  wm8994.o(.text.wm8994_Resume)
+    [Anonymous Symbol]                       0x08004464   Section        0  wm8994.o(.text.wm8994_SetFrequency)
+    __arm_cp.7_0                             0x080044cc   Number         4  wm8994.o(.text.wm8994_SetFrequency)
+    [Anonymous Symbol]                       0x080044d0   Section        0  wm8994.o(.text.wm8994_SetMute)
+    __arm_cp.9_0                             0x08004508   Number         4  wm8994.o(.text.wm8994_SetMute)
+    [Anonymous Symbol]                       0x0800450c   Section        0  wm8994.o(.text.wm8994_SetOutputMode)
+    __arm_cp.10_0                            0x08004568   Number         4  wm8994.o(.text.wm8994_SetOutputMode)
+    __arm_cp.10_1                            0x0800456c   Number         4  wm8994.o(.text.wm8994_SetOutputMode)
+    __arm_cp.10_2                            0x08004570   Number         4  wm8994.o(.text.wm8994_SetOutputMode)
+    [Anonymous Symbol]                       0x08004574   Section        0  wm8994.o(.text.wm8994_SetVolume)
+    [Anonymous Symbol]                       0x08004660   Section        0  wm8994.o(.text.wm8994_Stop)
+    __arm_cp.6_0                             0x080046c0   Number         4  wm8994.o(.text.wm8994_Stop)
+    __arm_cp.6_1                             0x080046c4   Number         4  wm8994.o(.text.wm8994_Stop)
+    i.__scatterload_copy                     0x080046c8   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x080046d6   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x080046d8   Section       14  handlers.o(i.__scatterload_zeroinit)
+    [Anonymous Symbol]                       0x080046e6   Section        0  wm8994.o(.rodata..Lswitch.table.wm8994_SetOutputMode)
+    [Anonymous Symbol]                       0x080046ec   Section        0  wm8994.o(.rodata..Lswitch.table.wm8994_SetOutputMode.1)
+    [Anonymous Symbol]                       0x080046f2   Section        0  wm8994.o(.rodata..Lswitch.table.wm8994_SetOutputMode.2)
+    armlogo                                  0x08007214   Data       140671  stm32f7_display.o(.rodata.armlogo)
+    [Anonymous Symbol]                       0x08007214   Section        0  stm32f7_display.o(.rodata.armlogo)
+    [Anonymous Symbol]                       0x08029794   Section        0  stm32f7xx_hal_ltdc.o(.rodata.cst32)
     [Anonymous Symbol]                       0x20000000   Section        0  stm32f7xx_hal.o(.data..L_MergedGlobals)
     outputEnabled                            0x20000080   Data           1  wm8994.o(.bss..L_MergedGlobals)
     [Anonymous Symbol]                       0x20000080   Section        0  wm8994.o(.bss..L_MergedGlobals)
@@ -18489,29 +18489,29 @@ Image Symbol Table
     drawGrid                                 0x08003ba1   Thumb Code   144  stm32f7_display.o(.text.drawGrid)
     init_LCD                                 0x08003c35   Thumb Code   188  stm32f7_display.o(.text.init_LCD)
     main                                     0x08003d4d   Thumb Code   360  stm32f7_average_prbs.o(.text.main)
-    prbs                                     0x08003f0d   Thumb Code    48  stm32f7_prbs.o(.text.prbs)
-    stm32f7_LCD_init                         0x08003f7d   Thumb Code    42  stm32f7_display.o(.text.stm32f7_LCD_init)
-    wm8994_DeInit                            0x08003fa7   Thumb Code     4  wm8994.o(.text.wm8994_DeInit)
-    wm8994_Init                              0x08003fad   Thumb Code  1152  wm8994.o(.text.wm8994_Init)
-    wm8994_Pause                             0x0800442d   Thumb Code    24  wm8994.o(.text.wm8994_Pause)
-    wm8994_Play                              0x08004445   Thumb Code    10  wm8994.o(.text.wm8994_Play)
-    wm8994_ReadID                            0x0800444f   Thumb Code    18  wm8994.o(.text.wm8994_ReadID)
-    wm8994_Reset                             0x08004461   Thumb Code    24  wm8994.o(.text.wm8994_Reset)
-    wm8994_Resume                            0x0800447d   Thumb Code    10  wm8994.o(.text.wm8994_Resume)
-    wm8994_SetFrequency                      0x08004489   Thumb Code   104  wm8994.o(.text.wm8994_SetFrequency)
-    wm8994_SetMute                           0x080044f5   Thumb Code    56  wm8994.o(.text.wm8994_SetMute)
-    wm8994_SetOutputMode                     0x08004531   Thumb Code    92  wm8994.o(.text.wm8994_SetOutputMode)
-    wm8994_SetVolume                         0x08004599   Thumb Code   236  wm8994.o(.text.wm8994_SetVolume)
-    wm8994_Stop                              0x08004685   Thumb Code    96  wm8994.o(.text.wm8994_Stop)
-    __scatterload_copy                       0x080046ed   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x080046fb   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x080046fd   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    AHBPrescTable                            0x0800471c   Data          16  system_stm32f7xx.o(.rodata.AHBPrescTable)
-    Font12_Table                             0x0800472c   Data        1140  stm32746g_discovery_lcd.o(.rodata.Font12_Table)
-    Font16_Table                             0x08004ba0   Data        3040  stm32746g_discovery_lcd.o(.rodata.Font16_Table)
-    Font24_Table                             0x08005780   Data        6840  stm32746g_discovery_lcd.o(.rodata.Font24_Table)
-    Region$$Table$$Base                      0x080297d8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080297f8   Number         0  anon$$obj.o(Region$$Table)
+    prbs                                     0x08003ee9   Thumb Code    48  stm32f7_prbs.o(.text.prbs)
+    stm32f7_LCD_init                         0x08003f59   Thumb Code    42  stm32f7_display.o(.text.stm32f7_LCD_init)
+    wm8994_DeInit                            0x08003f83   Thumb Code     4  wm8994.o(.text.wm8994_DeInit)
+    wm8994_Init                              0x08003f89   Thumb Code  1152  wm8994.o(.text.wm8994_Init)
+    wm8994_Pause                             0x08004409   Thumb Code    24  wm8994.o(.text.wm8994_Pause)
+    wm8994_Play                              0x08004421   Thumb Code    10  wm8994.o(.text.wm8994_Play)
+    wm8994_ReadID                            0x0800442b   Thumb Code    18  wm8994.o(.text.wm8994_ReadID)
+    wm8994_Reset                             0x0800443d   Thumb Code    24  wm8994.o(.text.wm8994_Reset)
+    wm8994_Resume                            0x08004459   Thumb Code    10  wm8994.o(.text.wm8994_Resume)
+    wm8994_SetFrequency                      0x08004465   Thumb Code   104  wm8994.o(.text.wm8994_SetFrequency)
+    wm8994_SetMute                           0x080044d1   Thumb Code    56  wm8994.o(.text.wm8994_SetMute)
+    wm8994_SetOutputMode                     0x0800450d   Thumb Code    92  wm8994.o(.text.wm8994_SetOutputMode)
+    wm8994_SetVolume                         0x08004575   Thumb Code   236  wm8994.o(.text.wm8994_SetVolume)
+    wm8994_Stop                              0x08004661   Thumb Code    96  wm8994.o(.text.wm8994_Stop)
+    __scatterload_copy                       0x080046c9   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x080046d7   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x080046d9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    AHBPrescTable                            0x080046f8   Data          16  system_stm32f7xx.o(.rodata.AHBPrescTable)
+    Font12_Table                             0x08004708   Data        1140  stm32746g_discovery_lcd.o(.rodata.Font12_Table)
+    Font16_Table                             0x08004b7c   Data        3040  stm32746g_discovery_lcd.o(.rodata.Font16_Table)
+    Font24_Table                             0x0800575c   Data        6840  stm32746g_discovery_lcd.o(.rodata.Font24_Table)
+    Region$$Table$$Base                      0x080297b4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080297d4   Number         0  anon$$obj.o(Region$$Table)
     uwTickFreq                               0x20000000   Data           1  stm32f7xx_hal.o(.data..L_MergedGlobals)
     uwTickPrio                               0x20000004   Data           4  stm32f7xx_hal.o(.data..L_MergedGlobals)
     BUTTON_PORT                              0x20000008   Data          12  stm32746g_discovery.o(.data.BUTTON_PORT)
@@ -18547,9 +18547,9 @@ Memory Map of the image
 
   Image Entry point : 0x080001c9
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00029880, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00029860, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000297f8, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000297d4, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -18824,57 +18824,57 @@ Memory Map of the image
     0x08003b9e   0x08003b9e   0x00000002   PAD
     0x08003ba0   0x08003ba0   0x00000094   Code   RO         4721    .text.drawGrid      stm32f7_display.o
     0x08003c34   0x08003c34   0x00000118   Code   RO         4725    .text.init_LCD      stm32f7_display.o
-    0x08003d4c   0x08003d4c   0x000001c0   Code   RO         4806    .text.main          stm32f7_average_prbs.o
-    0x08003f0c   0x08003f0c   0x00000034   Code   RO         4826    .text.prbs          stm32f7_prbs.o
-    0x08003f40   0x08003f40   0x0000003c   Code   RO         4812    .text.sat16f        stm32f7_average_prbs.o
-    0x08003f7c   0x08003f7c   0x0000002a   Code   RO         4749    .text.stm32f7_LCD_init  stm32f7_display.o
-    0x08003fa6   0x08003fa6   0x00000004   Code   RO           69    .text.wm8994_DeInit  wm8994.o
-    0x08003faa   0x08003faa   0x00000002   PAD
-    0x08003fac   0x08003fac   0x00000480   Code   RO           67    .text.wm8994_Init   wm8994.o
-    0x0800442c   0x0800442c   0x00000018   Code   RO           75    .text.wm8994_Pause  wm8994.o
-    0x08004444   0x08004444   0x0000000a   Code   RO           73    .text.wm8994_Play   wm8994.o
-    0x0800444e   0x0800444e   0x00000012   Code   RO           71    .text.wm8994_ReadID  wm8994.o
-    0x08004460   0x08004460   0x0000001c   Code   RO           89    .text.wm8994_Reset  wm8994.o
-    0x0800447c   0x0800447c   0x0000000a   Code   RO           77    .text.wm8994_Resume  wm8994.o
-    0x08004486   0x08004486   0x00000002   PAD
-    0x08004488   0x08004488   0x0000006c   Code   RO           81    .text.wm8994_SetFrequency  wm8994.o
-    0x080044f4   0x080044f4   0x0000003c   Code   RO           85    .text.wm8994_SetMute  wm8994.o
-    0x08004530   0x08004530   0x00000068   Code   RO           87    .text.wm8994_SetOutputMode  wm8994.o
-    0x08004598   0x08004598   0x000000ec   Code   RO           83    .text.wm8994_SetVolume  wm8994.o
-    0x08004684   0x08004684   0x00000068   Code   RO           79    .text.wm8994_Stop   wm8994.o
-    0x080046ec   0x080046ec   0x0000000e   Code   RO         8513    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x080046fa   0x080046fa   0x00000002   Code   RO         8514    i.__scatterload_null  mc_w.l(handlers.o)
-    0x080046fc   0x080046fc   0x0000000e   Code   RO         8515    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0800470a   0x0800470a   0x00000006   Data   RO          106    .rodata..Lswitch.table.wm8994_SetOutputMode  wm8994.o
-    0x08004710   0x08004710   0x00000006   Data   RO          107    .rodata..Lswitch.table.wm8994_SetOutputMode.1  wm8994.o
-    0x08004716   0x08004716   0x00000006   Data   RO          108    .rodata..Lswitch.table.wm8994_SetOutputMode.2  wm8994.o
-    0x0800471c   0x0800471c   0x00000010   Data   RO         4847    .rodata.AHBPrescTable  system_stm32f7xx.o
-    0x0800472c   0x0800472c   0x00000474   Data   RO         5016    .rodata.Font12_Table  stm32746g_discovery_lcd.o
-    0x08004ba0   0x08004ba0   0x00000be0   Data   RO         5014    .rodata.Font16_Table  stm32746g_discovery_lcd.o
-    0x08005780   0x08005780   0x00001ab8   Data   RO         5010    .rodata.Font24_Table  stm32746g_discovery_lcd.o
-    0x08007238   0x08007238   0x0002257f   Data   RO         4789    .rodata.armlogo     stm32f7_display.o
-    0x080297b7   0x080297b7   0x00000001   PAD
-    0x080297b8   0x080297b8   0x00000020   Data   RO         3181    .rodata.cst32       stm32f7xx_hal_ltdc.o
-    0x080297d8   0x080297d8   0x00000020   Data   RO         8512    Region$$Table       anon$$obj.o
+    0x08003d4c   0x08003d4c   0x0000019c   Code   RO         4806    .text.main          stm32f7_average_prbs.o
+    0x08003ee8   0x08003ee8   0x00000034   Code   RO         4826    .text.prbs          stm32f7_prbs.o
+    0x08003f1c   0x08003f1c   0x0000003c   Code   RO         4812    .text.sat16f        stm32f7_average_prbs.o
+    0x08003f58   0x08003f58   0x0000002a   Code   RO         4749    .text.stm32f7_LCD_init  stm32f7_display.o
+    0x08003f82   0x08003f82   0x00000004   Code   RO           69    .text.wm8994_DeInit  wm8994.o
+    0x08003f86   0x08003f86   0x00000002   PAD
+    0x08003f88   0x08003f88   0x00000480   Code   RO           67    .text.wm8994_Init   wm8994.o
+    0x08004408   0x08004408   0x00000018   Code   RO           75    .text.wm8994_Pause  wm8994.o
+    0x08004420   0x08004420   0x0000000a   Code   RO           73    .text.wm8994_Play   wm8994.o
+    0x0800442a   0x0800442a   0x00000012   Code   RO           71    .text.wm8994_ReadID  wm8994.o
+    0x0800443c   0x0800443c   0x0000001c   Code   RO           89    .text.wm8994_Reset  wm8994.o
+    0x08004458   0x08004458   0x0000000a   Code   RO           77    .text.wm8994_Resume  wm8994.o
+    0x08004462   0x08004462   0x00000002   PAD
+    0x08004464   0x08004464   0x0000006c   Code   RO           81    .text.wm8994_SetFrequency  wm8994.o
+    0x080044d0   0x080044d0   0x0000003c   Code   RO           85    .text.wm8994_SetMute  wm8994.o
+    0x0800450c   0x0800450c   0x00000068   Code   RO           87    .text.wm8994_SetOutputMode  wm8994.o
+    0x08004574   0x08004574   0x000000ec   Code   RO           83    .text.wm8994_SetVolume  wm8994.o
+    0x08004660   0x08004660   0x00000068   Code   RO           79    .text.wm8994_Stop   wm8994.o
+    0x080046c8   0x080046c8   0x0000000e   Code   RO         8513    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x080046d6   0x080046d6   0x00000002   Code   RO         8514    i.__scatterload_null  mc_w.l(handlers.o)
+    0x080046d8   0x080046d8   0x0000000e   Code   RO         8515    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x080046e6   0x080046e6   0x00000006   Data   RO          106    .rodata..Lswitch.table.wm8994_SetOutputMode  wm8994.o
+    0x080046ec   0x080046ec   0x00000006   Data   RO          107    .rodata..Lswitch.table.wm8994_SetOutputMode.1  wm8994.o
+    0x080046f2   0x080046f2   0x00000006   Data   RO          108    .rodata..Lswitch.table.wm8994_SetOutputMode.2  wm8994.o
+    0x080046f8   0x080046f8   0x00000010   Data   RO         4847    .rodata.AHBPrescTable  system_stm32f7xx.o
+    0x08004708   0x08004708   0x00000474   Data   RO         5016    .rodata.Font12_Table  stm32746g_discovery_lcd.o
+    0x08004b7c   0x08004b7c   0x00000be0   Data   RO         5014    .rodata.Font16_Table  stm32746g_discovery_lcd.o
+    0x0800575c   0x0800575c   0x00001ab8   Data   RO         5010    .rodata.Font24_Table  stm32746g_discovery_lcd.o
+    0x08007214   0x08007214   0x0002257f   Data   RO         4789    .rodata.armlogo     stm32f7_display.o
+    0x08029793   0x08029793   0x00000001   PAD
+    0x08029794   0x08029794   0x00000020   Data   RO         3181    .rodata.cst32       stm32f7xx_hal_ltdc.o
+    0x080297b4   0x080297b4   0x00000020   Data   RO         8512    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08029800, Size: 0x00002990, Max: 0x00050000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080297e0, Size: 0x00002990, Max: 0x00050000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08029800   0x00000008   Data   RW         3056    .data..L_MergedGlobals  stm32f7xx_hal.o
-    0x20000008   0x08029808   0x0000000c   Data   RW         5104    .data.BUTTON_PORT   stm32746g_discovery.o
-    0x20000014   0x08029814   0x00000008   Data   RW         5017    .data.Font12        stm32746g_discovery_lcd.o
-    0x2000001c   0x0802981c   0x00000008   Data   RW         5015    .data.Font16        stm32746g_discovery_lcd.o
-    0x20000024   0x08029824   0x00000008   Data   RW         5011    .data.Font24        stm32746g_discovery_lcd.o
-    0x2000002c   0x0802982c   0x00000004   Data   RW         4846    .data.SystemCoreClock  system_stm32f7xx.o
-    0x20000030   0x08029830   0x00000004   Data   RW         4787    .data.refresh_counter_factor  stm32f7_display.o
-    0x20000034   0x08029834   0x00000002   Data   RW         4832    .data.sreg          stm32f7_prbs.o
-    0x20000036   0x08029836   0x00000002   PAD
-    0x20000038   0x08029838   0x00000030   Data   RW          105    .data.wm8994_drv    wm8994.o
-    0x20000068   0x08029868   0x00000018   PAD
+    0x20000000   0x080297e0   0x00000008   Data   RW         3056    .data..L_MergedGlobals  stm32f7xx_hal.o
+    0x20000008   0x080297e8   0x0000000c   Data   RW         5104    .data.BUTTON_PORT   stm32746g_discovery.o
+    0x20000014   0x080297f4   0x00000008   Data   RW         5017    .data.Font12        stm32746g_discovery_lcd.o
+    0x2000001c   0x080297fc   0x00000008   Data   RW         5015    .data.Font16        stm32746g_discovery_lcd.o
+    0x20000024   0x08029804   0x00000008   Data   RW         5011    .data.Font24        stm32746g_discovery_lcd.o
+    0x2000002c   0x0802980c   0x00000004   Data   RW         4846    .data.SystemCoreClock  system_stm32f7xx.o
+    0x20000030   0x08029810   0x00000004   Data   RW         4787    .data.refresh_counter_factor  stm32f7_display.o
+    0x20000034   0x08029814   0x00000002   Data   RW         4832    .data.sreg          stm32f7_prbs.o
+    0x20000036   0x08029816   0x00000002   PAD
+    0x20000038   0x08029818   0x00000030   Data   RW          105    .data.wm8994_drv    wm8994.o
+    0x20000068   0x08029848   0x00000018   PAD
     0x20000080        -       0x00000006   Zero   RW          109    .bss..L_MergedGlobals  wm8994.o
-    0x20000086   0x08029868   0x00000002   PAD
+    0x20000086   0x08029848   0x00000002   PAD
     0x20000088        -       0x0000001c   Zero   RW         4791    .bss..L_MergedGlobals  stm32f7_display.o
     0x200000a4        -       0x00000078   Zero   RW         4817    .bss..L_MergedGlobals  stm32f7_average_prbs.o
     0x2000011c        -       0x0000005c   Zero   RW         5022    .bss..L_MergedGlobals  stm32746g_discovery_lcd.o
@@ -18891,7 +18891,7 @@ Memory Map of the image
     0x20002480        -       0x00000084   Zero   RW         5213    .bss.haudio_in_sai  stm32746g_discovery_audio.o
     0x20002504        -       0x00000084   Zero   RW         5212    .bss.haudio_out_sai  stm32746g_discovery_audio.o
     0x20002588        -       0x00000004   Zero   RW         3055    .bss.uwTick         stm32f7xx_hal.o
-    0x2000258c   0x08029868   0x00000004   PAD
+    0x2000258c   0x08029848   0x00000004   PAD
     0x20002590        -       0x00000400   Zero   RW          117    STACK               startup_stm32f746xx.o
 
 
@@ -18907,7 +18907,7 @@ Image component sizes
       1206         68          0          0        460      20355   stm32746g_discovery_audio.o
       1728         64      11020         24        392      30498   stm32746g_discovery_lcd.o
        628         32          0          0        196      10214   stm32746g_discovery_sdram.o
-       826        112          0          0       8312      10937   stm32f7_average_prbs.o
+       790         76          0          0       8312      10892   stm32f7_average_prbs.o
        522         96     140671          4         28      15039   stm32f7_display.o
         52          4          0          2          0       1775   stm32f7_prbs.o
        166         20          0          8          4       8372   stm32f7xx_hal.o
@@ -18928,7 +18928,7 @@ Image component sizes
       1918         40         18         48          6       6175   wm8994.o
 
     ----------------------------------------------------------------------
-     17384        756     152246        104      10536     290358   Object Totals
+     17348        720     152246        104      10536     290313   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         44          0          1          2         30          0   (incl. Padding)
 
@@ -18973,15 +18973,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17730        774     152246        104      10536     290506   Grand Totals
-     17730        774     152246        104      10536     290506   ELF Image Totals
-     17730        774     152246        104          0          0   ROM Totals
+     17694        738     152246        104      10536     290461   Grand Totals
+     17694        738     152246        104      10536     290461   ELF Image Totals
+     17694        738     152246        104          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)               169976 ( 165.99kB)
+    Total RO  Size (Code + RO Data)               169940 ( 165.96kB)
     Total RW  Size (RW Data + ZI Data)             10640 (  10.39kB)
-    Total ROM Size (Code + RO Data + RW Data)     170080 ( 166.09kB)
+    Total ROM Size (Code + RO Data + RW Data)     170044 ( 166.06kB)
 
 ==============================================================================
 

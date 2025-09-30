@@ -837,14 +837,9 @@
               <FilePath>..\Src\stm32f7_display.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f7_prbs.c</FileName>
+              <FileName>stm32f7_impinviir.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\stm32f7_prbs.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f7_fir_prbs.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\stm32f7_fir_prbs.c</FilePath>
+              <FilePath>..\Src\stm32f7_impinviir.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1698,14 +1693,9 @@
               <FilePath>..\Src\stm32f7_display.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f7_prbs.c</FileName>
+              <FileName>stm32f7_impinviir.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\stm32f7_prbs.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f7_fir_prbs.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\stm32f7_fir_prbs.c</FilePath>
+              <FilePath>..\Src\stm32f7_impinviir.c</FilePath>
             </File>
           </Files>
         </Group>

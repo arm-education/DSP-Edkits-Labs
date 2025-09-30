@@ -313,7 +313,7 @@ uint32_t wm8994_Init(uint16_t DeviceAddr, uint16_t OutputInputDevice, uint8_t Vo
       /* CHANGE! MIXOUTR_MIXINR_VOL set to 0 (mute)
        * +30db removed : 0x0020 instead of 0x0035  */
       counter += CODEC_IO_Write(DeviceAddr, 0x29, 0x0020);
-
+  
       /* Disable mute on IN1R_TO_MIXINL, Gain = +30dB */
       //counter += CODEC_IO_Write(DeviceAddr, 0x2A, 0x0035);
 

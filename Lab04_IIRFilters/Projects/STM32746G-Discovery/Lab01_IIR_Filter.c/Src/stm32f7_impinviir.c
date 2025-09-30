@@ -1,6 +1,5 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7_impinviir.h"
-#include "lp33.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -14,17 +13,22 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-static __attribute__((aligned(32))) uint16_t InBuf[BUF_SAMPLES];
-static __attribute__((aligned(32))) uint16_t OutBuf[BUF_SAMPLES];
+static __attribute__((aligned(32))) int16_t InBuf[BUF_SAMPLES];
+static __attribute__((aligned(32))) int16_t OutBuf[BUF_SAMPLES];
 
-static float32_t xn[BLOCK_SAMPLES_TOTAL];
+static float32_t xn;
+static float32_t yn;
+
+static float32_t xn1 = 0.0;
+static float32_t yn1 = 0.0;
+static float32_t yn2 = 0.0;
 
 /* Private function prototypes -----------------------------------------------*/
 static void MPU_Config(void);
 static void SystemClock_Config(void);
 static void CPU_CACHE_Enable(void);
 static void Error_Handler(void);
-static void Process_IIR(const uint16_t *in, uint16_t *out, uint32_t length);
+static void Process_IIR(const int16_t *in, int16_t *out, uint32_t length);
 void BSP_AUDIO_OUT_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t AudioFreq, void *Params);
 
 /* Private functions ---------------------------------------------------------*/
@@ -38,34 +42,24 @@ void BSP_AUDIO_IN_TransferComplete_CallBack(void)
   Process_IIR(InBuf + BLOCK_SAMPLES_TOTAL, OutBuf + BLOCK_SAMPLES_TOTAL, BLOCK_SAMPLES_TOTAL);
 }
 
-static inline int16_t sat16f(float32_t y){
-  if (y >  32767.0f) return  32767;
-  if (y < -32768.0f) return -32768;
-  return (int16_t)y;
-}
-
-static void Process_IIR(const uint16_t *in, uint16_t *out, uint32_t length)
+static void Process_IIR(const int16_t *in, int16_t *out, uint32_t length)
 {
   for (uint32_t i = 0; i < length; i += AUDIO_IN_CHANNEL_NBR)
   {
-    // ---- Left ----
-    float32_t ynL = 0.0f;
-    for (uint32_t k = N - 1; k > 0; k--) xL[k] = xL[k - 1];
-    int16_t sL = (int16_t)in[i + 0];
-    xL[0] = (float32_t)sL;
-    for (uint32_t k = 0; k < N; k++) ynL += h[k] * xL[k];
+    xn = in[i];
+    /**********************************************************************
+      insert code to compute new output sample here, i.e.
+      y(n) = 0.241275x(n-1) + 1.40067718y(n-1) - 0.62282680y(n-2)
+      also update stored previous sample values, i.e.
+      y(n-2), y(n-1), and x(n-1)
+    **********************************************************************/
 
-    // ---- Right (Comment this section if you're using mono input) ----
-    float32_t ynR = 0.0f;
-    for (uint32_t k = N - 1; k > 0; k--) xR[k] = xR[k - 1];
-    int16_t sR = (int16_t)in[i + 1];
-    xR[0] = (float32_t)sR;
-    for (uint32_t k = 0; k < N; k++) ynR += h[k] * xR[k];
-
-    out[i + 0] = (uint16_t)sat16f(ynL);
-    out[i + 1] = (uint16_t)sat16f(ynR);
-    // If you’re using mono input, comment the line above and use the code below.
-		//out[i + 1] = out[i + 0];
+    yn = 0.241275f * xn1 + 1.40067718f * yn1 - 0.62282670f * yn2;
+    yn2 = yn1;
+    yn1 = yn;
+    xn1 = xn;
+    out[i + 0] = (int16_t)(yn);
+    out[i + 1] = out[i + 0];
   }
 }
 
@@ -93,15 +87,18 @@ int main(void)
     Error_Handler();
   }
 	
+	BSP_AUDIO_IN_SetVolume(83);
+	BSP_AUDIO_OUT_SetVolume(83);
+	
   BSP_AUDIO_OUT_SetAudioFrameSlot(CODEC_AUDIOFRAME_SLOT_02);
 
-  if (BSP_AUDIO_OUT_Play(OutBuf, sizeof(OutBuf)) != AUDIO_OK)
+  if (BSP_AUDIO_OUT_Play((uint16_t*)OutBuf, sizeof(OutBuf)) != AUDIO_OK)
   {
     Error_Handler();
   }
 
   /* Start IN with ping-pong buffer. Size is in HALF-WORDS (uint16_t). */
-  if (BSP_AUDIO_IN_Record(InBuf, BUF_SAMPLES) != AUDIO_OK)
+  if (BSP_AUDIO_IN_Record((uint16_t*)InBuf, BUF_SAMPLES) != AUDIO_OK)
   {
     Error_Handler();
   }
